@@ -1,0 +1,49 @@
+/* ===================================
+    Styling
+====================================== */
+
+.btn-pink {background: linear-gradient(to right, #423f9c 0%, #862359 100%);border: 2px solid #862359
+}
+.btn-transparent-pink{color: #423f9c;background:transparent;border: 2px solid #862359
+}
+.btn-transparent-pink:before{background:linear-gradient(to right, #423f9c 0%, #862359 100%);}
+.main-color{color: #423f9c
+}
+
+::-webkit-scrollbar,::-webkit-scrollbar-thumb {background-color: #423f9c
+}
+.nav-line .navbar-nav .nav-link:before,.nav-line-left .navbar-nav .nav-link:before,.hr-line,.prog-item .skills-progress span,.team-box label,.team-box label:hover,.team-box #rad2 + .team-box label:hover,
+.team-two-right-nav, .team-two-left-nav,.overlay:before,.portfolio-three .item-img-overlay:before,.price-item.center,.button-play-two,.owl-testimonial .owl-item.center .testimonial-item .testimonial-quote,
+.owl-testimonial .owl-dots .owl-dot.active span,.owl-testimonial .owl-dots .owl-dot:hover span,.button-play,.widget .search-btn,.blog-tags li a:hover,.blog-tags li a:focus,.side-menu,
+.scroll-top-arrow,.scroll-top-arrow:focus,.heroex .tp-count:before,.rev-gradient
+{background: linear-gradient(to right, #423f9c 0%, #862359 100%);}
+a:hover, a:active,.top-center-logo .navbar-nav .nav-link:hover,
+.header-appear .top-center-logo .navbar-nav .nav-link:hover,.top-left-logo .navbar-nav .nav-link:hover,
+.header-appear .top-left-logo .navbar-nav .nav-link:hover,.navbar-top-default .navbar-nav .nav-link:hover,
+.header-appear .navbar-top-default .navbar-nav .nav-link:hover,.port_head,.portfolio-three .filtering .active,
+.button-play-two:hover,.button-play-two:focus,.button-play-two:hover i,.button-play-two:focus i,.owl-testimonial .owl-item.center .testimonial-item .text-small,
+.button-play:hover,.button-play:focus,.button-play:hover i,.button-play:focus i,.our-address .pickus,.blog-pagination li a:hover,.blog-pagination li.active a,.blog-pagination li a:focus
+{color: #423f9c
+}
+
+
+.scroll-down .triangle-down{border-top: 10px solid #423f9c
+}
+.owl-testimonial .owl-dots .owl-dot span {border: 1px solid #423f9c;}
+.blog-box h4 {border-left: 2px solid #423f9c
+}
+
+.cssload-inner.cssload-one {border-bottom: 5px solid #423f9c
+}
+.cssload-inner.cssload-two {border-right: 5px solid #423f9c
+}
+.cssload-inner.cssload-three {border-top: 5px solid #423f9c
+}
+
+.btn{
+    border:transparent !important;
+    letter-spacing: .5px !important;
+}
+.btn-transparent-white{
+    border: 2px solid #FFFFFF !important;
+}
