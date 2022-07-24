@@ -31,34 +31,36 @@ class HomeController extends Controller
 
         $ratesArray = $datesArray = array();
         $rates = Rate::where(['source_currency' => 'USD', 'destination_currency' => $user->country->currency_code])
-            ->where('created_at','>=',Carbon::now()->subDays(12))->get();
+            ->where('created_at', '>=', Carbon::now()->subDays(12))->get();
 
-        foreach ($rates as $rate){
-            array_push($ratesArray,$rate->rate);
-            array_push($datesArray,Carbon::parse($rate->created_at)->format('jS M'));
+        foreach ($rates as $rate) {
+            array_push($ratesArray, $rate->rate);
+            array_push($datesArray, Carbon::parse($rate->created_at)->format('jS M'));
         }
 
         $transactionVolumeArray = $transactionVolumeDates = array();
         $transactionVolumeCollections = $user->transactions()->latest()->limit(12)->get();
 
-        foreach ($transactionVolumeCollections as $transactionVolumeCollection){
-            array_push($transactionVolumeArray,$transactionVolumeCollection->source_amount);
-            array_push($transactionVolumeDates,Carbon::parse($transactionVolumeCollection->created_at)
+        foreach ($transactionVolumeCollections as $transactionVolumeCollection) {
+            array_push($transactionVolumeArray, $transactionVolumeCollection->source_amount);
+            array_push($transactionVolumeDates, Carbon::parse($transactionVolumeCollection->created_at)
                 ->format('jS M'));
         }
 
         $uniqueUserTransactionalCurrencies = $user->transactions()->distinct()->pluck('destination_currency')->toArray();
 
         $receiveAmountDistributions = array();
-        foreach ($uniqueUserTransactionalCurrencies as $uniqueUserTransactionalCurrency){
-            array_push($receiveAmountDistributions,$user->transactions()
-                ->where('destination_currency',$uniqueUserTransactionalCurrency)->sum('source_amount'));
+        foreach ($uniqueUserTransactionalCurrencies as $uniqueUserTransactionalCurrency) {
+            array_push($receiveAmountDistributions, $user->transactions()
+                ->where('destination_currency', $uniqueUserTransactionalCurrency)->sum('source_amount'));
         }
 
-        return view('home',['receiveAmountDistributions' => $receiveAmountDistributions,
+        return view('home', [
+            'receiveAmountDistributions' => $receiveAmountDistributions,
             'uniqueUserTransactionalCurrencies' => $uniqueUserTransactionalCurrencies,
-            'transactionVolumeArray' => $transactionVolumeArray,'transactionVolumeDates' => $transactionVolumeDates,
-            'transactions' => $transactions,'user_currency' => $user->country->currency_code, 'rates' => $ratesArray,
-            'dates' => $datesArray]);
+            'transactionVolumeArray' => $transactionVolumeArray, 'transactionVolumeDates' => $transactionVolumeDates,
+            'transactions' => $transactions, 'user_currency' => $user->country->currency_code, 'rates' => $ratesArray,
+            'dates' => $datesArray
+        ]);
     }
 }

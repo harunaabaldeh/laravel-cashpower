@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Bank;
+use Countries;
 use App\Beneficiary;
-use App\DataTables\BeneficiariesDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\DataTables\BeneficiariesDataTable;
 
 class BeneficiariesController extends Controller
 {
@@ -29,7 +32,7 @@ class BeneficiariesController extends Controller
      */
     public function create()
     {
-        $supportCountries = \Countries::whereIn('iso_3166_2',explode(',',env('supportedCountryList')))->pluck('name','id');
+        $supportCountries = Countries::whereIn('iso_3166_2',explode(',',env('supportedCountryList')))->pluck('name','id');
 
         return  view('beneficiaries.create',['countries' => $supportCountries]);
     }
@@ -50,7 +53,7 @@ class BeneficiariesController extends Controller
                 'nickname' => $request->input('nickname'),
                 'othernames' => $request->input('othernames'),
                 'country_id' => $request->input('country_id'),
-                'user_id' => \Auth::user()->id,
+                'user_id' => Auth::user()->id,
             ]);
 
             if ($request->has('msisdn')){

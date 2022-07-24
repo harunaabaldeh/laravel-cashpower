@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Gate;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -19,12 +19,12 @@ class ProfileController extends Controller
     public function edit()
     {
         $idTypesList = array();
-        $idTypes = explode(",",env('allowedIdTypes'));
+        $idTypes = explode(",", env('allowedIdTypes'));
 
-        foreach ($idTypes as $idType){
+        foreach ($idTypes as $idType) {
             $idTypesList[$idType] = $idType;
         }
-        return view('profile.edit',['idTypes' => $idTypesList]);
+        return view('profile.edit', ['idTypes' => $idTypesList]);
     }
 
     /**
